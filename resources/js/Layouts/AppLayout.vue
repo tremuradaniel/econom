@@ -11,7 +11,9 @@
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
                                 <inertia-link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
+                                    <div class="text-white bg-black rounded-full flex justify-center pt-8 sm:pt-0 text-2xl select-none">
+                                        💲 econom 💲
+                                    </div>
                                 </inertia-link>
                             </div>
 
