@@ -26,3 +26,4 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('accounts', [AccountController::class, 'index'])->name('account.index');
+Route::middleware(['auth:sanctum', 'verified'])->get('accounts/create', [AccountController::class, 'create'])->name('account.create');

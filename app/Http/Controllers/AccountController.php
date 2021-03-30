@@ -29,7 +29,9 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Accounts/CreateAccount', [
+
+        ]);
     }
 
     /**

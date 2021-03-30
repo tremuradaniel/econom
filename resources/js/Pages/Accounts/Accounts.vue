@@ -3,8 +3,8 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <welcome v-if="!userHasAccounts" />
-                    <create-account v-else  />
+                    <welcome v-if="showWelcome" />
+                    <create-account v-if="createAccount"  />
                 </div>
             </div>
         </div>
@@ -18,9 +18,14 @@
 
     export default {
         name: 'Accounts',
+        data () {
+            return {
+                createAccount: false
+            }
+        },
         computed: {
-            userHasAccounts: function () {
-                return this?.accounts.length > 0
+            showWelcome: function () {
+                return !(this?.accounts.length > 0) && !this.createAccount
             }
         },
         props: {
@@ -36,6 +41,17 @@
             'app-layout': AppLayout,
             'create-account': CreateAccount,
             'welcome': Welcome
+        },
+        methods: {
+            showCreateAccount: function () {
+                this.createAccount = true
+            }
+        },
+        beforeUnmount () {
+            this.emitter.off('showCreateAccount', this.showCreateAccount)
+        },
+        created () {
+            this.emitter.on('showCreateAccount', this.showCreateAccount)
         }
     }
 </script>

@@ -14,7 +14,9 @@
             <div class="mt-6 text-gray-500">
                 It looks like you don't have an account yet...
             </div>
-            <button type="submit">Create Account</button>
+            <button class="bg-green-500 mt-6 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
+             type="submit" @click="showCreateAccount"
+            >Create Account</button>
         </div>
     </div>
 </template>
@@ -26,5 +28,10 @@
         components: {
             JetApplicationLogo,
         },
+        methods: {
+            showCreateAccount: function () {
+                this.emitter.emit('showCreateAccount')
+            }
+        }
     }
 </script>

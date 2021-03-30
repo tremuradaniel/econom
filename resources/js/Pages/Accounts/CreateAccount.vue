@@ -5,7 +5,7 @@
                 💲 econom 💲
             </div>
             <div class="mt-8 text-2xl">
-                !!!
+                Create New Account Page
             </div>
 
             <div class="mt-6 text-gray-500">
