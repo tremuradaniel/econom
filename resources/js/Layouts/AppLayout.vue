@@ -10,7 +10,7 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
-                                <inertia-link :href="route('dashboard')">
+                                <inertia-link :href="route('account.index')">
                                     <div class="text-white bg-black rounded-full flex justify-center pt-8 sm:pt-0 text-2xl select-none">
                                         💲 econom 💲
                                     </div>
@@ -19,8 +19,8 @@
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                <jet-nav-link :href="route('account.index')" :active="route().current('account.index')">
+                                    Accounts
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                        <jet-responsive-nav-link :href="route('account.index')" :active="route().current('account.index')">
                             Dashboard
                         </jet-responsive-nav-link>
                     </div>
