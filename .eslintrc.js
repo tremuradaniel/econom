@@ -13,7 +13,8 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'vue'
+    'vue',
+    'html'
   ],
   rules: {
   }
