@@ -6,4 +6,14 @@ module.exports = {
             '@': path.resolve('resources/js')
         },
     },
+    module: {
+        rules: [
+            {
+                enforce: 'pre',
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                test: /\.(js|vue)?$/ 
+            }
+        ]
+    }
 };

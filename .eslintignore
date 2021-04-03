@@ -1,0 +1,7 @@
+/resources/js/Pages/Auth/*
+/resources/js/Pages/API/*
+/resources/js/Pages/Profile/*
+/resources/js/Jetstream/*
+/resources/js/Pages/PrivacyPolicy.vue
+/resources/js/Pages/TermsOfService.vue
+/node_modules/*
