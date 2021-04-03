@@ -1,26 +1,28 @@
-require('./bootstrap');
-
 // Import modules...
-import { createApp, h } from 'vue';
-import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
-import { InertiaProgress } from '@inertiajs/progress';
-import mitt from 'mitt';
-const emitter = mitt();
-const el = document.getElementById('app');
+import { createApp, h } from 'vue'
+import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3'
+import { InertiaProgress } from '@inertiajs/progress'
+import mitt from 'mitt'
+import route from 'ziggy'
+
+const emitter = mitt()
+const el = document.getElementById('app')
+
+require('./bootstrap')
 
 const app = createApp({
-    render: () =>
-        h(InertiaApp, {
-            initialPage: JSON.parse(el.dataset.page),
-            resolveComponent: (name) => require(`./Pages/${name}`).default,
-        }),
-        provide: {
-            emitter: emitter
-        }
+  provide: {
+    emitter: emitter
+  },
+  render: () =>
+    h(InertiaApp, {
+      initialPage: JSON.parse(el.dataset.page),
+      resolveComponent: (name) => require(`./Pages/${name}`).default
+    })
 }).mixin({ methods: { route } }).use(InertiaPlugin)
 
-app.config.globalProperties.emitter = emitter;
+app.config.globalProperties.emitter = emitter
 
-app.mount(el);
+app.mount(el)
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init({ color: '#4B5563' })
