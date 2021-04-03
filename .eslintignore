@@ -4,4 +4,6 @@
 /resources/js/Jetstream/*
 /resources/js/Pages/PrivacyPolicy.vue
 /resources/js/Pages/TermsOfService.vue
+/resources/js/Layouts/AppLayout.vue
 /node_modules/*
+/vendor/*
