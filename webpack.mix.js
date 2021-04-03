@@ -17,7 +17,18 @@ mix.js('resources/js/app.js', 'public/js').vue()
         require('tailwindcss'),
         require('autoprefixer'),
     ])
-    .webpackConfig(require('./webpack.config'));
+    .webpackConfig({
+        module: {
+            rules: [
+            {
+                enforce: 'pre',
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                test: /\.(js|vue)?$/ 
+            },
+            ]
+        }
+    }, require('./webpack.config'));
 
 if (mix.inProduction()) {
     mix.version();
