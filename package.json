@@ -36,6 +36,7 @@
         "vue-loader": "^16.1.2"
     },
     "dependencies": {
-        "mitt": "^2.1.0"
+        "mitt": "^2.1.0",
+        "sprint": "^0.3.1"
     }
 }
