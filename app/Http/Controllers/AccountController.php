@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Account;
+use App\Models\Currency;
+use App\Models\AccountType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,11 +29,12 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createFormData()
     {
-        return Inertia::render('Accounts/CreateAccount', [
-
-        ]);
+        $data = new \stdClass();
+        $data->currencies = Currency::all();
+        $data->accountTypes = AccountType::all();
+        return response()->json($data);
     }
 
     /**
@@ -42,7 +45,7 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

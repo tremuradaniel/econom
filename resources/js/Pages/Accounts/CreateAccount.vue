@@ -13,20 +13,40 @@
         <div class="m-7">
           <form
             id="form"
-            action=""
+            action="/accounts/create_account"
             method="POST"
+            @submit.prevent="createAccount"
           >
-            <input-field />
-            <input-field />
-            <dropdown />
-            <div class="mb-6">
-              <button
-                type="submit"
-                class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
-              >
-                Create Account
-              </button>
-            </div>
+            <input-field
+              :id="'accountName'"
+              :label="'Name'"
+              :value="form.formaccountName"
+              :input-name="'accountName'"
+              @update-value="updateValue"
+            />
+            <input-field
+              :label="'Initial amount'"
+              :type="'number'"
+              :value="form.initialAmount"
+              @update-value="updateValue"
+            />
+            <dropdown
+              :id="'accountType'"
+              :label="'Type'"
+              :name="'accountType'"
+              :options="accountTypes"
+              @update-value="updateValue"
+            />
+            <dropdown
+              :id="'currency'"
+              :label="'Currency'"
+              :name="'currency'"
+              :options="currencies"
+              @update-value="updateValue"
+            />
+            <button-snippet
+              :button-text="'Create account'"
+            />
             <p
               id="result"
               class="text-base text-center text-gray-400"
@@ -39,14 +59,67 @@
 </template>
 
 <script>
-import Input from '@/Snippets/Forms/Input'
+import Button from '@/Snippets/Forms/Button'
 import Dropdown from '@/Snippets/Forms/Dropdown'
+import Input from '@/Snippets/Forms/Input'
+import axios from 'axios'
+import sprint from 'sprint'
 
 export default {
   name: 'CreateAccount',
   components: {
-    'input-field': Input,
-    dropdown: Dropdown
+    'button-snippet': Button,
+    dropdown: Dropdown,
+    'input-field': Input
+  },
+  data () {
+    return {
+      form: {
+        accountName: '',
+        initialAmount: 0,
+        accountType: null,
+        currency: null
+      },
+      accountTypes: [],
+      currencies: []
+    }
+  },
+  mounted () {
+    this.getData()
+  },
+  methods: {
+    createAccount: function () {
+      console.log('createAccount')
+      this.$inertia.post('/accounts/create_account', this.form)
+    },
+    getData: function () {
+      axios.get('accounts/create_form_data')
+        .then((res) => {
+          this.setData(res.data)
+        })
+        .catch(function (error) {
+          console.error(error)
+        })
+    },
+    updateValue: function (name, value) {
+      this.form[name] = value
+    },
+    setData: function (data) {
+      this.currencies = data?.currencies.map(elem => {
+        return {
+          id: elem.id,
+          name: sprint('%s (%s)', elem.name, elem.short_name)
+        }
+      })
+      this.accountTypes = data.accountTypes
+        ? data.accountTypes.map(elem => {
+          return {
+            id: elem.id,
+            name: elem.name
+          }
+        })
+        : []
+    }
   }
 }
 </script>
