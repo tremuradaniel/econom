@@ -18,9 +18,9 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $userAccounts = Account::where('user_id', Auth::id())->get();
+        $accounts = Account::where('user_id', Auth::id())->get();
         return Inertia::render('Accounts/Accounts', [
-            'userAccounts' => $userAccounts
+            'accounts' => $accounts
         ]);
     }
 
@@ -45,7 +45,14 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        Account::create([
+            'user_id' => Auth::id(),
+            'name' => $request->accountName,
+            'currency_id' => $request->currency,
+            'account_type_id' => $request->accountType,
+            'amount' => $request->initialAmount
+        ]);
+        return redirect()->route('account.index');
     }
 
     /**

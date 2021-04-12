@@ -28,6 +28,7 @@
               :label="'Initial amount'"
               :type="'number'"
               :value="form.initialAmount"
+              :input-name="'initialAmount'"
               @update-value="updateValue"
             />
             <dropdown
@@ -89,7 +90,6 @@ export default {
   },
   methods: {
     createAccount: function () {
-      console.log('createAccount')
       this.$inertia.post('/accounts/create_account', this.form)
     },
     getData: function () {
