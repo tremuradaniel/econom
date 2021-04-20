@@ -6,10 +6,10 @@
     >
       <inertia-link
         v-if="$page.props.user"
-        href="/dashboard"
+        :href="route('account.index')" :active="route().current('account.index')"
         class="text-sm text-gray-700 underline"
       >
-        Dashboard
+        Accounts
       </inertia-link>
 
       <template v-else>

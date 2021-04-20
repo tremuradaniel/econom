@@ -143,7 +143,7 @@
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <jet-responsive-nav-link :href="route('account.index')" :active="route().current('account.index')">
-                            Dashboard
+                            Accounts
                         </jet-responsive-nav-link>
                     </div>
 
