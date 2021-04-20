@@ -25,6 +25,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/php_info', function () {
+    return view('dev.php_info');
+})->name('dev.phpInfo');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('accounts', [AccountController::class, 'index'])->name('account.index');
 Route::middleware(['auth:sanctum', 'verified'])->get('accounts/create', [AccountController::class, 'create'])->name('account.create');
 Route::middleware(['auth:sanctum', 'verified'])->get('accounts/create_form_data', [AccountController::class, 'createFormData'])->name('account.create_form_data');
