@@ -18,7 +18,9 @@
           <td>{{ account.account_type.name }}</td>
           <td>{{ account.amount }}</td>
           <td>{{ account.currency.name }}</td>
-          <td>-</td>
+          <td>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </td>
         </tr>
       </table>
     </div>
@@ -39,7 +41,7 @@ export default {
     }
   },
   created () {
-    debugger
+
   }
 
 }
