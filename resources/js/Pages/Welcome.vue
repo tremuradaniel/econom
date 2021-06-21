@@ -6,7 +6,8 @@
     >
       <inertia-link
         v-if="$page.props.user"
-        :href="route('account.index')" :active="route().current('account.index')"
+        :href="route('account.index')"
+        :active="route().current('account.index')"
         class="text-sm text-gray-700 underline"
       >
         Accounts

@@ -17,5 +17,6 @@ module.exports = {
     'html'
   ],
   rules: {
+    "no-debugger":"off"
   }
 }

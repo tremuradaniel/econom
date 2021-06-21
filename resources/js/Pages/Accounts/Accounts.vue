@@ -5,6 +5,10 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
           <welcome v-if="showWelcome" />
           <create-account v-if="createAccount" />
+          <accounts-list
+            v-else
+            :accounts="accounts"
+          />
         </div>
       </div>
     </div>
@@ -13,12 +17,14 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout'
+import AccountsList from '@/Pages/Accounts/AccountsList'
 import CreateAccount from '@/Pages/Accounts/CreateAccount'
 import Welcome from '@/Pages/Accounts/Welcome'
 
 export default {
   name: 'Accounts',
   components: {
+    'accounts-list': AccountsList,
     'app-layout': AppLayout,
     'create-account': CreateAccount,
     welcome: Welcome

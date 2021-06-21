@@ -11,4 +11,14 @@ class Account extends Model
 
     protected $guarded = [];
 
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
+    }
+
+    public function accountType()
+    {
+        return $this->belongsTo(AccountType::class);
+    }
+
 }

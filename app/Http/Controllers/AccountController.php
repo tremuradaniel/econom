@@ -19,6 +19,7 @@ class AccountController extends Controller
     public function index()
     {
         $accounts = Account::where('user_id', Auth::id())->get();
+        $accounts->load('currency', 'accountType');
         return Inertia::render('Accounts/Accounts', [
             'accounts' => $accounts
         ]);
